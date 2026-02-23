@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Real-time multiplayer gaming backend server",
   "main": "dist/server.js",
-  "type": "module",
   "scripts": {
     "dev": "node --loader ts-node/esm src/server.ts",
     "build": "tsc",
