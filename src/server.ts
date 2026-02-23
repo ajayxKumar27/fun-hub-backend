@@ -51,7 +51,7 @@ const io = configureSocket(server, CLIENT_URL);
 
 app.use(
   cors({
-    origin: [CLIENT_URL, 'http://localhost:3000', 'http://localhost:5173'],
+    origin: '*',
     credentials: true,
   })
 );

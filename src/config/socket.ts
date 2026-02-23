@@ -10,38 +10,7 @@ import { gameRoomService } from '../services/gameRoomService.js';
 export function configureSocket(httpServer: HTTPServer, clientUrl: string) {
   const io = new Server(httpServer, {
     cors: {
-      origin: (origin, callback) => {
-        // Allow localhost and local network IPs
-        if (!origin) {
-          callback(null, true);
-          return;
-        }
-
-        // Allow localhost
-        if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-          callback(null, true);
-          return;
-        }
-
-        // Allow local network IPs (192.168.x.x, 10.x.x.x, 172.16.x.x)
-        if (
-          origin.includes('192.168') ||
-          origin.includes('10.0') ||
-          origin.includes('10.') ||
-          origin.includes('172.1')
-        ) {
-          callback(null, true);
-          return;
-        }
-
-        // Allow configured client URL
-        if (origin === clientUrl) {
-          callback(null, true);
-          return;
-        }
-
-        callback(null, false);
-      },
+      origin: '*',
       methods: ['GET', 'POST'],
       credentials: true,
     },
